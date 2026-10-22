@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-10-22T07:42:00+02:00",
+  "source": "demo-simulator",
+  "demo": true,
+  "system": {
+    "status": "normal",
+    "communication": true,
+    "optolink": true,
+    "zigbee": true
+  },
+  "boiler": {
+    "temperature": 61.6,
+    "burner": true,
+    "burnerRuntimeMinutes": 26,
+    "burnerSince": "2026-10-22T07:16:00+02:00",
+    "modulation": 65
+  },
+  "heating": {
+    "supplyTemperature": 57.8,
+    "returnTemperature": 43.6,
+    "pressure": 1.5,
+    "pump": true
+  },
+  "hotWater": {
+    "temperature": 48.7,
+    "target": 55
+  },
+  "outside": {
+    "temperature": 9.1,
+    "weather": "cloudy",
+    "humidity": 87,
+    "min": 8.3,
+    "max": 13,
+    "sunrise": "2026-10-22T08:12:26+02:00",
+    "sunset": "2026-10-22T18:26:29+02:00",
+    "isDay": false
+  },
+  "rooms": [
+    {
+      "id": "living-room",
+      "name": "Wohnzimmer",
+      "temperature": 21.2,
+      "target": 21,
+      "humidity": 47,
+      "battery": 92,
+      "signal": 84,
+      "lastUpdate": "2026-10-22T07:39:55+02:00"
+    },
+    {
+      "id": "kitchen",
+      "name": "Küche",
+      "temperature": 20.2,
+      "target": 20,
+      "humidity": 50,
+      "battery": 81,
+      "signal": 72,
+      "lastUpdate": "2026-10-22T07:41:34+02:00"
+    },
+    {
+      "id": "bedroom",
+      "name": "Schlafzimmer",
+      "temperature": 18.4,
+      "target": 18,
+      "humidity": 49,
+      "battery": 88,
+      "signal": 72,
+      "lastUpdate": "2026-10-22T07:39:10+02:00"
+    },
+    {
+      "id": "office",
+      "name": "Büro",
+      "temperature": 19.4,
+      "target": 19,
+      "humidity": 41,
+      "battery": 64,
+      "signal": 58,
+      "lastUpdate": "2026-10-22T07:41:14+02:00"
+    },
+    {
+      "id": "bathroom",
+      "name": "Bad",
+      "temperature": 22.3,
+      "target": 22,
+      "humidity": 56,
+      "battery": 76,
+      "signal": 84,
+      "lastUpdate": "2026-10-22T07:40:45+02:00"
+    }
+  ]
+}

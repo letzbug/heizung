@@ -1,0 +1,13 @@
+{
+  "name": "frank-cameron-heating-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Read-only heating monitoring dashboard (Viessmann · Optolink · Zigbee). No build step, no dependencies.",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "demo-data": "node tools/generate-demo-data.mjs",
+    "check": "node tools/check-readonly.mjs"
+  },
+  "license": "UNLICENSED"
+}

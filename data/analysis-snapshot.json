@@ -1,0 +1,310 @@
+{
+  "schema": "frank-cameron.heating-monitor.analysis-snapshot/v1",
+  "generatedAt": "2026-10-22T07:42:18+02:00",
+  "readOnly": true,
+  "dataMode": "demo",
+  "system": {
+    "status": "normal",
+    "headline": "SYSTEM NORMAL",
+    "measuredAt": "2026-10-22T07:42:00+02:00",
+    "stale": false,
+    "communication": {
+      "optolink": true,
+      "zigbeeSensorsOnline": 5,
+      "zigbeeSensorsTotal": 5
+    },
+    "boiler": {
+      "temperature": 61.6,
+      "burner": true,
+      "burnerRuntimeMinutes": 26
+    },
+    "heating": {
+      "supplyTemperature": 57.8,
+      "returnTemperature": 43.6,
+      "pressure": 1.5
+    },
+    "hotWater": {
+      "temperature": 48.7
+    },
+    "outside": {
+      "temperature": 9.1,
+      "weather": "cloudy",
+      "humidity": 87
+    }
+  },
+  "rooms": [
+    {
+      "id": "living-room",
+      "name": "Wohnzimmer",
+      "temperature": 21.2,
+      "target": 21,
+      "humidity": 47,
+      "battery": 92,
+      "signal": 84,
+      "lastUpdate": "2026-10-22T07:39:55+02:00",
+      "online": true
+    },
+    {
+      "id": "kitchen",
+      "name": "Küche",
+      "temperature": 20.2,
+      "target": 20,
+      "humidity": 50,
+      "battery": 81,
+      "signal": 72,
+      "lastUpdate": "2026-10-22T07:41:34+02:00",
+      "online": true
+    },
+    {
+      "id": "bedroom",
+      "name": "Schlafzimmer",
+      "temperature": 18.4,
+      "target": 18,
+      "humidity": 49,
+      "battery": 88,
+      "signal": 72,
+      "lastUpdate": "2026-10-22T07:39:10+02:00",
+      "online": true
+    },
+    {
+      "id": "office",
+      "name": "Büro",
+      "temperature": 19.4,
+      "target": 19,
+      "humidity": 41,
+      "battery": 64,
+      "signal": 58,
+      "lastUpdate": "2026-10-22T07:41:14+02:00",
+      "online": true
+    },
+    {
+      "id": "bathroom",
+      "name": "Bad",
+      "temperature": 22.3,
+      "target": 22,
+      "humidity": 56,
+      "battery": 76,
+      "signal": 84,
+      "lastUpdate": "2026-10-22T07:40:45+02:00",
+      "online": true
+    }
+  ],
+  "historySummary": {
+    "period": "7d",
+    "from": "2026-10-15T05:30:00.000Z",
+    "to": "2026-10-22T05:30:00.000Z",
+    "resolutionMinutes": 15,
+    "points": 672,
+    "boilerTemperature": {
+      "min": 39.2,
+      "max": 74.4,
+      "mean": 53.7,
+      "coverage": 1
+    },
+    "supplyTemperature": {
+      "min": 35.4,
+      "max": 68.7,
+      "mean": 50.1,
+      "coverage": 1
+    },
+    "returnTemperature": {
+      "min": 30.8,
+      "max": 48.8,
+      "mean": 40.1,
+      "coverage": 1
+    },
+    "hotWaterTemperature": {
+      "min": 44.4,
+      "max": 55.1,
+      "mean": 51.1,
+      "coverage": 1
+    },
+    "outsideTemperature": {
+      "min": 3.7,
+      "max": 14.8,
+      "mean": 9.5,
+      "coverage": 1
+    },
+    "pressure": {
+      "min": 1.46,
+      "max": 1.52,
+      "mean": 1.49,
+      "coverage": 1,
+      "trendBarPerDay": -0.003
+    },
+    "burner": {
+      "runtimeHours": 63.9,
+      "dutyPercent": 38.1,
+      "starts": 120
+    },
+    "rooms": {
+      "living-room": {
+        "min": 18.1,
+        "max": 21.6,
+        "mean": 20.8,
+        "coverage": 1
+      },
+      "kitchen": {
+        "min": 17.4,
+        "max": 20.8,
+        "mean": 19.6,
+        "coverage": 1
+      },
+      "bedroom": {
+        "min": 18,
+        "max": 18.5,
+        "mean": 18.4,
+        "coverage": 1
+      },
+      "office": {
+        "min": 17.2,
+        "max": 19.8,
+        "mean": 18.4,
+        "coverage": 1
+      },
+      "bathroom": {
+        "min": 19.8,
+        "max": 22.6,
+        "mean": 21,
+        "coverage": 1
+      }
+    }
+  },
+  "events": [
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T08:45:00+02:00",
+      "end": "2026-10-21T09:15:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T10:15:00+02:00",
+      "end": "2026-10-21T10:30:00+02:00",
+      "minutes": 15
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T12:00:00+02:00",
+      "end": "2026-10-21T12:15:00+02:00",
+      "minutes": 15
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T14:00:00+02:00",
+      "end": "2026-10-21T14:15:00+02:00",
+      "minutes": 15
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T15:45:00+02:00",
+      "end": "2026-10-21T16:15:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T17:45:00+02:00",
+      "end": "2026-10-21T18:00:00+02:00",
+      "minutes": 15
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T18:30:00+02:00",
+      "end": "2026-10-21T19:00:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T20:45:00+02:00",
+      "end": "2026-10-21T21:15:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-21T22:15:00+02:00",
+      "end": "2026-10-21T22:30:00+02:00",
+      "minutes": 15
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-22T00:30:00+02:00",
+      "end": "2026-10-22T01:00:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-22T02:00:00+02:00",
+      "end": "2026-10-22T02:30:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-22T03:30:00+02:00",
+      "end": "2026-10-22T04:00:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-22T05:00:00+02:00",
+      "end": "2026-10-22T05:45:00+02:00",
+      "minutes": 45
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-22T06:15:00+02:00",
+      "end": "2026-10-22T06:45:00+02:00",
+      "minutes": 30
+    },
+    {
+      "type": "burner-run",
+      "start": "2026-10-22T07:15:00+02:00",
+      "end": null,
+      "minutes": null,
+      "ongoing": true
+    }
+  ],
+  "insights": [
+    {
+      "id": "burner-runtime",
+      "severity": "info",
+      "title": "Brennerlaufzeit",
+      "message": "Brennerlaufzeit −17 % gegenüber vergleichbaren Tagen.",
+      "metric": "−17 %",
+      "confidence": 0.88,
+      "source": "cameron-local"
+    },
+    {
+      "id": "burner-cycling",
+      "severity": "info",
+      "title": "Brennertakt",
+      "message": "15 Brennerstarts in 24 Stunden, im Mittel 28 Minuten Laufzeit.",
+      "metric": "15 Starts",
+      "confidence": 0.7,
+      "source": "cameron-local"
+    },
+    {
+      "id": "pressure-trend",
+      "severity": "positive",
+      "title": "Anlagendruck",
+      "message": "Anlagendruck seit sieben Tagen stabil.",
+      "metric": "1.46–1.52 bar",
+      "confidence": 0.9,
+      "source": "cameron-local"
+    },
+    {
+      "id": "heat-up",
+      "severity": "positive",
+      "title": "Aufheizzeit",
+      "message": "Wohnzimmer hat den Sollbereich zur üblichen Zeit erreicht (07:22 Uhr).",
+      "metric": "07:22",
+      "confidence": 0.9,
+      "source": "cameron-local"
+    }
+  ],
+  "privacy": {
+    "containsCredentials": false,
+    "containsLocation": false,
+    "containsPersonalData": false,
+    "note": "Sanitized export for read-only analysis. No secrets, no addresses, no coordinates, no device identifiers."
+  }
+}
