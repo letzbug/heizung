@@ -150,6 +150,17 @@ export function evaluateSystemStatus(current, { config, now = Date.now(), histor
   }
 
   const burner = burnerInfo(current, now);
+  // Only display an explicitly reported mode. Never infer it from temperatures.
+  const modeRaw = current.system.operatingMode?.trim().toUpperCase();
+  const modeText = modeRaw === 'WW' || modeRaw === '00' || modeRaw === '0'
+    ? 'Warmwasser'
+    : modeRaw === 'H+WW' || modeRaw === '03' || modeRaw === '3'
+      ? 'Heizung + Warmwasser'
+      : modeRaw === 'RED' ? 'Reduziert'
+      : modeRaw === 'NORM' ? 'Normalbetrieb'
+      : modeRaw === 'H+WW FS' ? 'Heizung + WW (Frostschutz)'
+      : modeRaw === 'ABSCHALT' ? 'Abschaltbetrieb'
+      : 'Nicht verfügbar';
   const items = [
     {
       id: 'system',
@@ -157,6 +168,7 @@ export function evaluateSystemStatus(current, { config, now = Date.now(), histor
       value: severity === 'normal' ? 'Alle Systeme OK' : `${relevant.length} ${relevant.length === 1 ? 'Meldung' : 'Meldungen'}`,
       severity,
     },
+    { id: 'operating-mode', label: 'BETRIEBSMODUS', value: stale || optolink !== true ? 'Nicht verfügbar' : modeText, severity: stale || optolink !== true || modeText === 'Nicht verfügbar' ? 'unknown' : 'normal' },
     { id: 'pressure', label: pressureLabel, value: fmtPressure(p), severity: pressureSeverity },
     {
       id: 'burner',
@@ -195,6 +207,7 @@ function sentence(s) {
 function unknownItems() {
   return [
     { id: 'system', label: 'SYSTEM', value: 'Keine Daten', severity: 'unknown' },
+    { id: 'operating-mode', label: 'BETRIEBSMODUS', value: 'Nicht verfügbar', severity: 'unknown' },
     { id: 'pressure', label: 'DRUCK', value: 'Keine Daten', severity: 'unknown' },
     { id: 'burner', label: 'BRENNER', value: 'Keine Daten', severity: 'unknown' },
     { id: 'optolink', label: 'OPTOLINK', value: 'Unbekannt', severity: 'unknown' },

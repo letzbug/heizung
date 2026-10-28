@@ -215,6 +215,8 @@ export function normalizeCurrentState(raw, { rooms = [] } = {}) {
       communication,
       optolink: bool(system.optolink) ?? communication,
       zigbee: bool(system.zigbee),
+      // Read-only Vitotronic operating mode; supplied by Pi API when available.
+      operatingMode: text(system.operatingMode ?? system.operating_mode ?? boiler.operatingMode ?? boiler.operating_mode, 32),
     },
     boiler: {
       temperature: round(plausible(boiler.temperature, -20, 120), 1),

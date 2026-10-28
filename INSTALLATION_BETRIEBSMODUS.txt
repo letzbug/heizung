@@ -1,0 +1,16 @@
+VITOLA IQ – Betriebsmodus-Anzeige (nur lesend)
+
+Geändert: js/core/normalize.js, js/analysis/status.js
+
+Die neue Zeile BETRIEBSMODUS erscheint direkt unter SYSTEM NORMAL.
+
+WICHTIG: Diese ZIP enthält die Frontend-Quelldateien, NICHT den auf dem Raspberry Pi laufenden Python-Server vitola_server.py.
+Damit die Anzeige Live-Werte zeigt, muss die Pi-API /api/current unter system.operatingMode den zuletzt zuverlässig gelesenen Wert aus `getBetriebArt` liefern, z.B.:
+"system": {"optolink": true, "operatingMode": "WW"}
+oder "H+WW".
+
+Wenn das Feld fehlt, zeigt die Anzeige absichtlich „Nicht verfügbar“ statt einen Modus zu erfinden.
+Die vorhandene Pi-Installation nicht mit der ZIP überschreiben: zuerst die aktuellen Server- und Web-Dateien vergleichen und sichern.
+Kein Schreibzugriff und keine Heizungssteuerung in diesem Patch.
+
+Hinweis: getDevType: UNKNOWN ist unabhängig von der Modusanzeige; getBetriebArt wurde zuvor erfolgreich getestet.
