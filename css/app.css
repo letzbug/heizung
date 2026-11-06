@@ -112,6 +112,36 @@ button:focus-visible,
 }
 .hdr-logo svg { width: 30px; height: 30px; filter: drop-shadow(0 0 6px rgba(255, 120, 40, 0.6)); }
 
+/* Betriebsart neben dem Licht-/Flammenknopf; reine Statusanzeige. */
+.hdr-heating-mode {
+  width: 58px;
+  height: 58px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #738195;
+  background: linear-gradient(180deg, #1c2638, #0e1522);
+  border: 1px solid rgba(133, 148, 171, .32);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+  transition: color .25s, border-color .25s, box-shadow .25s, background .25s;
+}
+.hdr-heating-mode svg { width: 30px; height: 30px; }
+.hdr-heating-mode[data-mode="heating"] {
+  color: #ff833e;
+  border-color: rgba(255, 138, 60, .65);
+  background: radial-gradient(circle at 50% 58%, rgba(255, 120, 40, .3), rgba(255, 90, 30, .04) 65%), linear-gradient(180deg, #1c2638, #0e1522);
+  box-shadow: 0 0 26px rgba(255,110,40,.2), inset 0 1px 0 rgba(255,255,255,.07);
+}
+.hdr-heating-mode[data-mode="heating"] svg { filter: drop-shadow(0 0 6px rgba(255, 120, 40, .65)); }
+.hdr-heating-mode[data-mode="water"] {
+  color: #42cbff;
+  border-color: rgba(66, 203, 255, .65);
+  background: radial-gradient(circle at 50% 58%, rgba(40, 167, 255, .28), rgba(20, 92, 170, .04) 65%), linear-gradient(180deg, #1c2638, #0e1522);
+  box-shadow: 0 0 26px rgba(35,155,255,.19), inset 0 1px 0 rgba(255,255,255,.07);
+}
+.hdr-heating-mode[data-mode="water"] svg { filter: drop-shadow(0 0 6px rgba(66, 203, 255, .65)); }
+
 .hdr-text { min-width: 0; }
 .hdr-title { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
 
@@ -765,6 +795,8 @@ h1 {
   .hdr-meta { flex-wrap: wrap; gap: 12px; }
   .hdr-status { min-width: 0; flex: 1 1 240px; padding: 12px 16px; }
   .hdr-logo { width: 48px; height: 48px; border-radius: 14px; }
+  .hdr-heating-mode { width: 48px; height: 48px; border-radius: 14px; }
+  .hdr-heating-mode svg { width: 25px; height: 25px; }
   .hdr-logo svg { width: 25px; height: 25px; }
   .hdr-sub { font-size: 13px; }
   .panel { padding: 14px 14px 16px; }
@@ -797,3 +829,18 @@ h1 {
 .low-power *, .low-power *::before, .low-power *::after { animation: none !important; }
 .low-power .fd-flow { opacity: 0 !important; }
 .low-power .fd-windows { filter: none; }
+
+/* Zigbee-Licht: gleiche Flamme, Animation nur bei bestätigtem Licht-AN. */
+.hdr-logo--light { cursor:pointer; font:inherit; padding:0; appearance:none; -webkit-appearance:none; transition:border-color .2s, box-shadow .2s; }
+.hdr-logo--light:focus-visible { outline:2px solid #ffb067; outline-offset:4px; }
+.hdr-logo--light:disabled { cursor:wait; opacity:.7; }
+.hdr-logo--light.light-on svg { animation: vitola-light-flame 1.65s ease-in-out infinite; transform-origin:50% 75%; }
+.hdr-logo--light.light-on { border-color:rgba(255,160,70,.75); box-shadow:0 0 28px rgba(255,105,30,.36),inset 0 1px 0 rgba(255,255,255,.07); }
+@keyframes vitola-light-flame { 0%,100% {transform:scale(1);filter:drop-shadow(0 0 5px rgba(255,120,40,.5))} 50% {transform:scale(1.16);filter:drop-shadow(0 0 14px rgba(255,145,45,.95))} }
+@media(prefers-reduced-motion:reduce) { .hdr-logo--light.light-on svg {animation:none} }
+
+/* Heizungs-Betriebsart: bewusstes Tippen mit anschliessender Bestaetigung. */
+.hdr-heating-mode {appearance:none; padding:0; font:inherit; cursor:pointer;}
+.hdr-heating-mode:focus-visible {outline:2px solid #42cbff;outline-offset:4px}
+.hdr-heating-mode:disabled {cursor:not-allowed;opacity:.65}
+.hdr-heating-mode:not(:disabled):active {transform:scale(.97)}
