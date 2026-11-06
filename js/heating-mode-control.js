@@ -3,7 +3,19 @@ export function initHeatingModeControl({refresh}) {
   const button = document.getElementById('hdr-heating-mode');
   if (!button) return;
   let busy = false;
-  let token = null; // Memory only, never stored on disk or in localStorage.
+  // Keep the control code only for this browser tab's session (not localStorage).
+  // sessionStorage survives reloads, but not closing the tab/session.
+  const sessionKey = 'vitola-heating-control-session';
+  const readToken = () => {
+    try { return window.sessionStorage.getItem(sessionKey); } catch { return null; }
+  };
+  const saveToken = value => {
+    try { window.sessionStorage.setItem(sessionKey, value); } catch { /* memory-only fallback */ }
+  };
+  const clearToken = () => {
+    try { window.sessionStorage.removeItem(sessionKey); } catch { /* unavailable */ }
+  };
+  let token = readToken();
   button.addEventListener('click', async () => {
     if (busy || button.disabled) return;
     const current = button.dataset.mode;
@@ -25,9 +37,10 @@ export function initHeatingModeControl({refresh}) {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data.verified !== true || data.mode !== mode) {
-        if (res.status === 403) token = null;
+        if (res.status === 403) { token = null; clearToken(); }
         throw new Error(data.error || `HTTP ${res.status}`);
       }
+      saveToken(token);
       await refresh();
       window.alert(`Betriebsart erfolgreich bestätigt: ${label}.`);
     } catch (err) {
