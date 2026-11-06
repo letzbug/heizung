@@ -43,6 +43,7 @@ export function createDashboard(config, { onPeriodChange } = {}) {
     statusTitle: byId('hdr-status-title'),
     statusDetail: byId('hdr-status-detail'),
     demoBadge: byId('demo-badge'),
+    heatingMode: byId('hdr-heating-mode'),
     source: byId('foot-source'),
     tempTitle: byId('temp-period'),
     pressureTitle: byId('pressure-period'),
@@ -136,6 +137,17 @@ export function createDashboard(config, { onPeriodChange } = {}) {
       alerts.update(status);
       statusPanel.update(status);
       this.tick(now, current, status);
+      // Betriebsart zeigt ausschliesslich den bestaetigten, frischen Messwert.
+      const mode = !status?.freshness?.stale && current?.system?.operatingMode;
+      const rawMode = typeof mode === 'string' ? mode.trim().toUpperCase() : '';
+      const modeClass = ['H+WW', 'H+WW FS', '03', '04'].includes(rawMode) ? 'heating'
+        : ['WW', '00'].includes(rawMode) ? 'water' : 'unknown';
+      const modeLabel = modeClass === 'heating' ? 'Heizen + Warmwasser'
+        : modeClass === 'water' ? 'Nur Warmwasser' : 'Betriebsart unbekannt';
+      setData(els.heatingMode, 'mode', modeClass);
+      els.heatingMode.setAttribute('aria-label', modeLabel);
+      els.heatingMode.title = modeClass === 'unknown' ? modeLabel : `${modeLabel} – klicken zum Umschalten`;
+      els.heatingMode.disabled = modeClass === 'unknown' || Boolean(isDemo);
       if (!current) return;
 
       const stale = status.freshness.stale;

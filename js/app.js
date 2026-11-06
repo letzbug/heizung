@@ -1,3 +1,5 @@
+import { initLightControl } from './light-control.js';
+import { initHeatingModeControl } from './heating-mode-control.js';
 /**
  * Frank & Cameron – Heating Monitor · application entry point
  *
@@ -18,6 +20,8 @@ configureFormat({ decimalSeparator: config.DECIMAL_SEPARATOR, timeZone: config.T
 document.documentElement.classList.toggle('low-power', Boolean(config.LOW_POWER));
 
 const provider = createDataProvider(config);
+initLightControl();
+initHeatingModeControl({ refresh: () => refreshCurrent() });
 
 const state = {
   current: null,
